@@ -1,11 +1,11 @@
 // Static server component — renders the multi-year sponsors logo grid.
 export default function Sponsors() {
   return (
-    <div className="py-8 px-6 border-b border-[#ddd]" id="sponsor">
-      <div className="text-center font-montserrat font-bold text-[0.68rem] tracking-[0.18em] uppercase text-[#222] mb-6">
+    <div className="w-full flex flex-col items-center py-10 px-6 bg-white" id="sponsor">
+      <div className="text-center font-montserrat font-bold text-lg tracking-[0.18em] uppercase text-[#222] mb-6">
         Organizadores &amp; Parceiros
       </div>
-      <div className="flex flex-wrap items-center justify-center gap-7 max-sm:gap-[0.9rem]">
+      <div className="max-w-3xl flex flex-wrap items-center justify-center gap-7 max-sm:gap-[0.9rem]">
         <div className="h-12 flex items-center justify-center px-4 py-[0.35rem] bg-[#f7f7f7] border border-[#ddd] rounded font-montserrat font-bold text-[0.68rem] text-[#666] tracking-[0.04em] whitespace-nowrap transition-all duration-200 hover:border-blue hover:text-blue">Enermina</div>
         <div className="h-12 flex items-center justify-center px-4 py-[0.35rem] bg-[#f7f7f7] border border-[#ddd] rounded font-montserrat font-bold text-[0.68rem] text-[#666] tracking-[0.04em] whitespace-nowrap transition-all duration-200 hover:border-blue hover:text-blue">APME</div>
         <div className="h-12 flex items-center justify-center px-4 py-[0.35rem] bg-[#f7f7f7] border border-[#ddd] rounded font-montserrat font-bold text-[0.68rem] text-[#666] tracking-[0.04em] whitespace-nowrap transition-all duration-200 hover:border-blue hover:text-blue">APICOL</div>

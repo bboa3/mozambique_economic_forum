@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-const TOTAL_SLIDES = 4;
+const TOTAL_SLIDES = 5;
 const AUTO_PLAY_MS = 5200;
 
 // Hero section with auto-playing image slider.
@@ -26,66 +26,82 @@ export default function HeroSlider() {
   return (
     <div className="relative h-135 overflow-hidden max-sm:h-120" id="home">
       {/* Centered brand overlay */}
-      <div className="absolute top-20.5 left-1/2 -translate-x-1/2 text-center z-10 pointer-events-none">
-        <h1 className="font-montserrat font-bold text-5xl leading-none text-white uppercase">
+      <div className="absolute top-28 left-1/2 -translate-x-1/2 text-center z-10 pointer-events-none">
+        <h1 className="font-montserrat font-black text-5xl leading-none text-white uppercase">
           Mozambique Economic Forum
         </h1>
-        <div className="text-2xl font-bold tracking-[0.2em] uppercase text-white/65 mt-1">
+        <div className="text-2xl font-bold tracking-[0.2em] uppercase text-orange-400 mt-1">
           JUNHO 21–22, 2026 · BEIRRA
         </div>
       </div>
 
       {/* Slide 0 */}
-      <div className={`absolute inset-0 transition-opacity duration-900 ease-in-out flex items-end pb-15 pl-14 max-sm:pb-12.5 max-sm:pl-6 ${current === 0 ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`absolute inset-0 transition-opacity duration-900 ease-in-out flex items-end pb-15 pl-14 max-sm:pb-12.5 ${current === 0 ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute inset-0 bg-cover bg-center slide-bg bg1"></div>
-        <div className="relative z-5 max-w-135">
-          <h1 className="font- text-[clamp(1.5rem,3.2vw,2.4rem)] text-white uppercase leading-[1.1] mb-5 [text-shadow:0_2px_16px_rgba(0,0,0,0.6)] max-sm:text-[1.25rem]">
-            LEARN FROM ESPORTS THOUGHT LEADERS AND INFLUENCERS
-          </h1>
+        <div className="relative z-5 w-full max-w-430 ms-auto">
+          <div className='max-w-135'>
+            <h2 className="font-montserrat text-xl uppercase text-white tracking-widest mb-5">
+              Investindo na Indústria, Serviços e <span className="text-orange-400">Conteúdo Local</span> em Moçambique
+            </h2>
+          </div>
         </div>
       </div>
 
       {/* Slide 1 */}
       <div className={`absolute inset-0 transition-opacity duration-900 ease-in-out flex items-end pb-15 pl-14 max-sm:pb-12.5 max-sm:pl-6 ${current === 1 ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute inset-0 bg-cover bg-center slide-bg bg2"></div>
-        <div className="relative z-5 max-w-135">
-          <h1 className="font-montserrat font-black text-[clamp(1.5rem,3.2vw,2.4rem)] text-white uppercase leading-[1.1] mb-5 [text-shadow:0_2px_16px_rgba(0,0,0,0.6)] max-sm:text-[1.25rem]">
-            BUILT OVER 10 YEARS. FOCUSED ON WHAT&apos;S NEXT.
-          </h1>
-          <p className="text-white/90 text-[0.9rem] leading-[1.65] mb-5 font-normal">
-            <strong style={{ color: '#fff' }}>
-              The EsportsTravel Summit has grown with the industry—and continues
-              to lead it forward.
-            </strong>
-            <br />
-            Don&apos;t miss the 10th edition.
-          </p>
+        <div className="relative z-5 w-full max-w-430 ms-auto">
+          <div className='max-w-135'>
+            <h2 className="font-montserrat text-xl uppercase text-white tracking-widest mb-5">
+              Um Novo Capítulo na História da <span className="text-orange-400">Independência Económica</span>
+            </h2>
+          </div>
         </div>
       </div>
 
       {/* Slide 2 */}
       <div className={`absolute inset-0 transition-opacity duration-900 ease-in-out flex items-end pb-15 pl-14 max-sm:pb-12.5 max-sm:pl-6 ${current === 2 ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute inset-0 bg-cover bg-center slide-bg bg3"></div>
-        <div className="relative z-5 max-w-135">
-          <h1 className="font-montserrat font-black text-[clamp(1.5rem,3.2vw,2.4rem)] text-white uppercase leading-[1.1] mb-5 [text-shadow:0_2px_16px_rgba(0,0,0,0.6)] max-sm:text-[1.25rem]">
-            WHERE SPORTS AND ENTERTAINMENT MEET INNOVATION
-          </h1>
+        <div className="relative z-5 w-full max-w-430 ms-auto">
+          <div className='max-w-135'>
+            <h2 className="font-montserrat text-xl uppercase text-white tracking-widest mb-5">
+              O Maior Palco de <span className="text-orange-400">Negócios, Ligações Económicas</span> e Investimentos em Moçambique
+            </h2>
+          </div>
         </div>
       </div>
 
       {/* Slide 3 */}
       <div className={`absolute inset-0 transition-opacity duration-900 ease-in-out flex items-end pb-15 pl-14 max-sm:pb-12.5 max-sm:pl-6 ${current === 3 ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute inset-0 bg-cover bg-center slide-bg bg4"></div>
-        <div className="relative z-5 max-w-135">
-          <h1 className="font-montserrat font-black text-[clamp(1.5rem,3.2vw,2.4rem)] text-white uppercase leading-[1.1] mb-5 [text-shadow:0_2px_16px_rgba(0,0,0,0.6)] max-sm:text-[1.25rem]">
-            PARTICIPATE IN THE DESTINATION &amp; SUPPLIER MARKETPLACE
-          </h1>
-          <a
-            href="#marketplace"
-            className="inline-block font-montserrat font-bold text-[0.7rem] tracking-widest uppercase py-[0.6rem] px-6 rounded-sm cursor-pointer border-0 transition-colors duration-200 bg-blue text-white hover:bg-blue-dark"
-          >
-            LEARN MORE
-          </a>
+        <div className="relative z-5 w-full max-w-430 ms-auto">
+          <div className='max-w-135'>
+            <h2 className="font-montserrat text-xl uppercase text-white tracking-widest mb-5">
+              O Melhor Lugar para Aceder a <span className="text-orange-400">Mercados, Financiamento</span> e Informação Económica
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <div className={`absolute inset-0 transition-opacity duration-900 ease-in-out flex items-end pb-15 pl-14 max-sm:pb-12.5 max-sm:pl-6 ${current === 4 ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="absolute inset-0 bg-cover bg-center slide-bg bg4"></div>
+        <div className="relative z-5 w-full max-w-430 ms-auto">
+          <div className='max-w-135'>
+            <h2 className="font-montserrat text-xl uppercase text-white tracking-widest mb-5">
+              O Centro das Parcerias <span className="text-orange-400">Públicas, Privadas</span> e Público-Privadas em Moçambique
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <div className={`absolute inset-0 transition-opacity duration-900 ease-in-out flex items-end pb-15 pl-14 max-sm:pb-12.5 max-sm:pl-6 ${current === 5 ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="absolute inset-0 bg-cover bg-center slide-bg bg4"></div>
+        <div className="relative z-5 w-full max-w-430 ms-auto">
+          <div className='max-w-135'>
+            <h2 className="font-montserrat text-xl uppercase text-white tracking-widest mb-5">
+              Conecte-se ao <span className="text-orange-400">Mercado Real</span> para Avançar o Desenvolvimento Económico de Moçambique
+            </h2>
+          </div>
         </div>
       </div>
 

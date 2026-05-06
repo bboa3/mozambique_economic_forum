@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mozambique Economic Forum</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  /* MEF brand colours — blue gradient from the logo */
+  --blue:       #1565c0;
+  --blue-mid:   #1976d2;
+  --blue-light: #2196f3;
+  --blue-dark:  #0d47a1;
+  --gold:       #f9a825;   /* accent warmth for Mozambique */
+  --navy:       #0a0f1e;
+  --dark:       #111;
+  --white:      #fff;
+  --light:      #f7f8fc;
+  --border:     #dde3ef;
+  --text:       #1a1a2e;
+  --muted:      #5a6275;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Open Sans', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+.topbar {
+  position: sticky; top: 0; z-index: 300;
+  background: var(--navy);
+  display: flex; align-items: stretch;
+  height: 66px; padding: 0 1.75rem;
+  border-bottom: 2px solid rgba(255,255,255,0.05);
+}
+.logo-area {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-right: 1.5rem; flex-shrink: 0;
+}
+/* Host logos placeholder row */
+.host-logos {
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.hlogo {
+  height: 36px; padding: 0 0.6rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800; font-size: 0.6rem;
+  letter-spacing: 0.06em; color: rgba(255,255,255,0.85);
+  white-space: nowrap;
+}
+.hlogo-sep { color: rgba(255,255,255,0.2); font-size: 1rem; }
+
+.logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900; font-size: 1.1rem;
+  color: #fff; letter-spacing: -0.01em; line-height: 1;
+}
+.logo-text span {
+  background: linear-gradient(90deg, var(--blue-light), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.logo-tagline {
+  font-size: 0.5rem; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 2px;
+}
+
+.nav-ul {
+  display: flex; list-style: none; align-items: stretch; flex: 1;
+}
+.nav-ul li a {
+  display: flex; align-items: center; height: 100%;
+  padding: 0 0.72rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-ul li a:hover { color: #fff; border-bottom-color: var(--blue-light); }
+.nav-ul li a.home-icon {
+  border: 1.5px solid rgba(255,255,255,0.35);
+  border-radius: 3px; padding: 0.2rem 0.5rem;
+  height: auto; align-self: center; margin-right: 0.3rem; font-size: 0.85rem;
+}
+
+/* ══════════════════════════════════════
+   HERO CAROUSEL
+══════════════════════════════════════ */
+.hero { position: relative; height: 560px; overflow: hidden; background: var(--navy); }
+
+.slide {
+  position: absolute; inset: 0; opacity: 0;
+  transition: opacity 0.9s ease;
+  display: flex; align-items: flex-end;
+  padding-bottom: 64px; padding-left: 60px;
+}
+.slide.active { opacity: 1; }
+
+.slide-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+}
+/* 6 thematic placeholder backgrounds */
+.bg1 { background: linear-gradient(155deg, #0d1b3e 0%, #1a3a6e 35%, #0a1020 100%); }
+.bg2 { background: linear-gradient(155deg, #1a0f00 0%, #3d2200 35%, #0d0d1a 100%); }
+.bg3 { background: linear-gradient(155deg, #001a0d 0%, #003d20 35%, #0a0d12 100%); }
+.bg4 { background: linear-gradient(155deg, #1a1a00 0%, #3d3800 35%, #0d0d1a 100%); }
+.bg5 { background: linear-gradient(155deg, #0d001a 0%, #2a003d 35%, #0a0d12 100%); }
+.bg6 { background: linear-gradient(155deg, #001a1a 0%, #003d3d 35%, #0a0d12 100%); }
+
+.slide-bg::before {
+  content: 'IMAGEM ILUSTRATIVA';
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Montserrat', sans-serif; font-size: 0.6rem;
+  letter-spacing: 0.3em; font-weight: 700;
+  color: rgba(255,255,255,0.04); pointer-events: none;
+}
+.slide-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right,
+    rgba(0,0,0,0.78) 0%,
+    rgba(0,0,0,0.38) 55%,
+    rgba(0,0,0,0.08) 100%);
+}
+
+/* Hero brand centred at top */
+.hero-brand {
+  position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+  text-align: center; z-index: 10; pointer-events: none;
+}
+.hero-brand .hb-main {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900; font-size: 2.2rem; color: #fff;
+  letter-spacing: -0.01em; line-height: 1.1;
+}
+.hero-brand .hb-main span {
+  background: linear-gradient(90deg, var(--blue-light), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-brand .hb-sub {
+  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 4px;
+}
+
+.slide-content { position: relative; z-index: 5; max-width: 560px; }
+.slide-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900; font-size: clamp(1.4rem, 3vw, 2.3rem);
+  color: #fff; text-transform: uppercase; line-height: 1.12;
+  margin-bottom: 1.3rem; text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+}
+.slide-title .accent { color: var(--gold); }
+
+.btn {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.65rem 1.6rem; border-radius: 3px;
+  cursor: pointer; border: none; transition: all 0.2s;
+}
+/* MEF gradient blue button */
+.btn-mef {
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue-light));
+  color: #fff; box-shadow: 0 4px 16px rgba(21,101,192,0.4);
+}
+.btn-mef:hover {
+  background: linear-gradient(90deg, var(--blue-mid), #42a5f5);
+  box-shadow: 0 6px 20px rgba(21,101,192,0.55);
+}
+.btn-outline-w {
+  border: 2px solid rgba(255,255,255,0.6); color: #fff; background: transparent;
+  margin-left: 0.6rem;
+}
+.btn-outline-w:hover { background: rgba(255,255,255,0.12); }
+
+.slider-dots {
+  position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 7px; z-index: 10;
+}
+.sdot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  border: 1.5px solid rgba(255,255,255,0.5);
+  cursor: pointer; padding: 0; transition: background 0.3s;
+}
+.sdot.active { background: var(--gold); border-color: var(--gold); }
+
+/* ══════════════════════════════════════
+   REGISTRATION SECTION
+══════════════════════════════════════ */
+.registration {
+  background: var(--light); border-bottom: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+}
+.registration-inner { max-width: 1000px; margin: 0 auto; }
+.reg-intro {
+  text-align: center; margin-bottom: 1.75rem;
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted);
+}
+.reg-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+}
+.reg-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem 1.25rem; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 0.85rem;
+  transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+  position: relative; overflow: hidden;
+}
+.reg-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue-light));
+}
+.reg-card:hover {
+  box-shadow: 0 8px 28px rgba(21,101,192,0.15);
+  border-color: var(--blue-light); transform: translateY(-3px);
+}
+.reg-icon { font-size: 2rem; line-height: 1; }
+.reg-title {
+  font-family: 'Montserrat', sans-serif; font-weight: 800;
+  font-size: 0.88rem; color: var(--text);
+}
+.reg-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+.reg-card .btn-mef { font-size: 0.65rem; padding: 0.55rem 1.2rem; width: 100%; text-align: center; }
+
+/* ══════════════════════════════════════
+   HOST LOGOS BAR
+══════════════════════════════════════ */
+.host-logos-bar {
+  background: #fff; padding: 1.75rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.host-logos-bar .bar-label {
+  text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 1.4rem;
+}
+.hlogos-row {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: center; gap: 1.5rem;
+}
+.hlogo-pill {
+  height: 50px; display: flex; align-items: center; justify-content: center;
+  padding: 0.4rem 1.2rem;
+  background: var(--light); border: 1px solid var(--border); border-radius: 5px;
+  font-family: 'Montserrat', sans-serif; font-weight: 800;
+  font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em;
+  transition: all 0.2s; white-space: nowrap;
+}
+.hlogo-pill:hover { border-color: var(--blue-light); color: var(--blue); }
+
+/* ══════════════════════════════════════
+   ABOUT SECTION
+══════════════════════════════════════ */
+.about { max-width: 900px; margin: 0 auto; padding: 4rem 2rem 2rem; }
+.about h2 {
+  font-family: 'Montserrat', sans-serif; font-weight: 800;
+  font-size: 1.55rem; color: var(--text);
+  margin-bottom: 1.25rem; text-align: center;
+}
+.about h2 span { color: var(--blue); }
+.about .sub-head {
+  text-align: center; color: var(--muted); font-size: 1rem;
+  margin-bottom: 2rem; line-height: 1.7;
+}
+.about p {
+  font-size: 0.885rem; line-height: 1.85; color: var(--muted); margin-bottom: 0.9rem;
+}
+.about p strong { color: var(--text); }
+
+/* VMV cards */
+.vmv-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem;
+}
+.vmv-card {
+  background: var(--light); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; position: relative; overflow: hidden;
+}
+.vmv-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue-light));
+}
+.vmv-card h4 {
+  font-family: 'Montserrat', sans-serif; font-weight: 800;
+  font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 0.6rem;
+}
+.vmv-card p { font-size: 0.82rem; line-height: 1.7; color: var(--muted); }
+
+/* ══════════════════════════════════════
+   IMPACT BANNER
+══════════════════════════════════════ */
+.impact-banner {
+  background: linear-gradient(135deg, var(--navy) 0%, #0d2060 100%);
+  color: #fff; padding: 3.5rem 2rem; text-align: center;
+  position: relative; overflow: hidden;
+}
+.impact-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(33,150,243,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(33,150,243,0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.impact-banner .inner { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+.impact-banner p {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: clamp(1rem, 2.3vw, 1.3rem); line-height: 1.55;
+}
+.impact-banner p strong { color: var(--gold); }
+
+/* ══════════════════════════════════════
+   AGENDA SECTION
+══════════════════════════════════════ */
+.agenda-section { background: var(--navy); color: #fff; padding: 3.5rem 2rem 4.5rem; }
+.agenda-ttl {
+  font-family: 'Montserrat', sans-serif; font-weight: 800;
+  font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
+  text-align: center; margin-bottom: 2.5rem;
+  color: rgba(255,255,255,0.9);
+}
+.agenda-inner { max-width: 1100px; margin: 0 auto; }
+
+.agenda-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+}
+.agenda-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 1.5rem 1.25rem;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  position: relative; overflow: hidden;
+}
+.agenda-card::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue-light), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.agenda-card:hover {
+  background: rgba(33,150,243,0.08);
+  border-color: rgba(33,150,243,0.35);
+  transform: translateY(-4px);
+}
+.agenda-card:hover::before { opacity: 1; }
+.agenda-card .a-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+.agenda-card h3 {
+  font-family: 'Montserrat', sans-serif; font-weight: 800;
+  font-size: 0.8rem; color: #fff; line-height: 1.4; margin-bottom: 0.5rem;
+}
+.agenda-card p { font-size: 0.76rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+/* ══════════════════════════════════════
+   STATS ROW
+══════════════════════════════════════ */
+.stats-row {
+  background: #fff; padding: 3rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.stats-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; text-align: center;
+}
+.stat-box {
+  padding: 1.5rem 1rem;
+  background: var(--light); border: 1px solid var(--border); border-radius: 8px;
+  position: relative; overflow: hidden;
+}
+.stat-box::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue-light));
+}
+.stat-num {
+  font-family: 'Montserrat', sans-serif; font-weight: 900;
+  font-size: 2.1rem; color: var(--blue); line-height: 1; margin-bottom: 0.3rem;
+}
+.stat-label { font-size: 0.76rem; color: var(--muted); line-height: 1.4; }
+
+/* ══════════════════════════════════════
+   MEMBERSHIP / TICKETS
+══════════════════════════════════════ */
+.members-section {
+  background: var(--light); padding: 4rem 2rem;
+  border-top: 1px solid var(--border);
+}
+.members-inner { max-width: 1100px; margin: 0 auto; }
+.sec-label {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.sec-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--blue); }
+.sec-title {
+  font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.5rem;
+  color: var(--text); margin-bottom: 2rem;
+}
+.sec-title span { color: var(--blue); }
+
+.plans-grid {
+  display: grid; grid-template-columns: repeat(5,1fr); gap: 1.1rem;
+}
+.plan-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 10px;
+  padding: 1.75rem 1.25rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+  position: relative; overflow: hidden;
+}
+.plan-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue-light));
+}
+.plan-card.featured {
+  border-color: var(--blue-light);
+  box-shadow: 0 8px 32px rgba(21,101,192,0.18);
+}
+.plan-card.featured::before {
+  background: linear-gradient(90deg, var(--gold), #ffca28);
+}
+.plan-card:hover {
+  box-shadow: 0 10px 32px rgba(21,101,192,0.15);
+  border-color: var(--blue-light); transform: translateY(-4px);
+}
+.plan-badge {
+  position: absolute; top: 12px; right: 12px;
+  background: var(--gold); color: var(--navy);
+  font-family: 'Montserrat', sans-serif; font-weight: 800;
+  font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.2rem 0.5rem; border-radius: 3px;
+}
+.plan-name {
+  font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.9rem;
+  color: var(--text);
+}
+.plan-price {
+  font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.5rem;
+  color: var(--blue); line-height: 1;
+}
+.plan-price span { font-size: 0.7rem; font-weight: 600; color: var(--muted); }
+.plan-perks { list-style: none; flex: 1; }
+.plan-perks li {
+  font-size: 0.76rem; line-height: 1.5; color: var(--muted);
+  padding: 0.3rem 0; border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 0.45rem;
+}
+.plan-perks li:last-child { border-bottom: none; }
+.plan-perks li::before { content: '✓'; color: var(--blue); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.plan-card .btn-mef { font-size: 0.64rem; padding: 0.55rem 1rem; text-align: center; }
+
+/* Billing note */
+.billing-note {
+  margin-top: 1.75rem; padding: 1.25rem 1.5rem;
+  background: #fff; border: 1px solid var(--border); border-radius: 8px;
+  font-size: 0.82rem; color: var(--muted); line-height: 1.7;
+}
+.billing-note strong { color: var(--text); }
+
+/* ══════════════════════════════════════
+   HISTORY SECTION
+══════════════════════════════════════ */
+.history-section {
+  background: var(--navy); color: #fff; padding: 4rem 2rem;
+}
+.history-inner { max-width: 900px; margin: 0 auto; }
+.history-inner .sec-label { color: var(--gold); }
+.history-inner .sec-label::before { background: var(--gold); }
+.history-inner .sec-title { color: #fff; }
+
+.timeline {
+  position: relative; margin-top: 0.5rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid rgba(33,150,243,0.35);
+}
+.tl-item {
+  position: relative; padding: 0 0 2rem 1.5rem;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -1.65rem; top: 4px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--blue-light); border: 2px solid var(--navy);
+  box-shadow: 0 0 0 3px rgba(33,150,243,0.25);
+}
+.tl-year {
+  font-family: 'Montserrat', sans-serif; font-weight: 800;
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.3rem;
+}
+.tl-item p { font-size: 0.875rem; line-height: 1.75; color: rgba(255,255,255,0.72); }
+
+/* ══════════════════════════════════════
+   LEADERSHIP
+══════════════════════════════════════ */
+.leadership-section { background: #fff; padding: 4rem 2rem; }
+.leadership-inner { max-width: 1000px; margin: 0 auto; }
+
+.leaders-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; margin-top: 0.5rem;
+}
+.leader-card {
+  background: var(--light); border: 1px solid var(--border); border-radius: 10px;
+  padding: 1.5rem 1rem; text-align: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.leader-card:hover { box-shadow: 0 6px 20px rgba(21,101,192,0.1); transform: translateY(-3px); }
+.leader-avatar {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue-light));
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 0.85rem;
+  font-family: 'Montserrat', sans-serif; font-weight: 900;
+  font-size: 1.1rem; color: #fff; letter-spacing: -0.02em;
+}
+.leader-name {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 0.82rem; color: var(--text); margin-bottom: 0.25rem;
+}
+.leader-role { font-size: 0.72rem; color: var(--blue); font-weight: 600; }
+
+/* ══════════════════════════════════════
+   ORGANISERS & SPONSORS
+══════════════════════════════════════ */
+.org-section {
+  background: var(--light); padding: 3rem 2rem;
+  border-top: 1px solid var(--border);
+}
+.org-inner { max-width: 1000px; margin: 0 auto; }
+.org-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+.org-block h4 {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 1rem;
+}
+.org-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.org-tag {
+  background: #fff; border: 1px solid var(--border); border-radius: 4px;
+  padding: 0.35rem 0.75rem;
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 0.68rem; color: var(--muted); transition: all 0.2s;
+}
+.org-tag:hover { border-color: var(--blue-light); color: var(--blue); }
+
+/* ══════════════════════════════════════
+   NEWSLETTER POPUP
+══════════════════════════════════════ */
+.newsletter-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(10,15,30,0.75); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s;
+}
+.newsletter-overlay.show { opacity: 1; pointer-events: all; }
+.newsletter-box {
+  background: #fff; border-radius: 12px;
+  max-width: 480px; width: 100%;
+  padding: 2.5rem 2rem; position: relative;
+  transform: translateY(30px); transition: transform 0.4s;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+.newsletter-overlay.show .newsletter-box { transform: translateY(0); }
+.nl-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: none; border: none; cursor: pointer;
+  font-size: 1.2rem; color: var(--muted);
+}
+.nl-close:hover { color: var(--text); }
+.nl-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue-light));
+  color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800;
+  font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 1rem;
+}
+.nl-title {
+  font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.3rem;
+  color: var(--text); margin-bottom: 0.5rem;
+}
+.nl-subtitle { font-size: 0.86rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; }
+.nl-form { display: flex; flex-direction: column; gap: 0.75rem; }
+.nl-input {
+  width: 100%; padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border); border-radius: 5px;
+  font-family: 'Open Sans', sans-serif; font-size: 0.88rem;
+  color: var(--text); outline: none;
+  transition: border-color 0.2s;
+}
+.nl-input:focus { border-color: var(--blue-light); }
+.nl-submit {
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue-light));
+  color: #fff; border: none; padding: 0.8rem 1rem;
+  border-radius: 5px; cursor: pointer;
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.nl-submit:hover { opacity: 0.88; }
+.nl-skip { text-align: center; }
+.nl-skip button {
+  background: none; border: none; cursor: pointer;
+  font-size: 0.75rem; color: var(--muted); text-decoration: underline;
+}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer { background: #0a0d18; color: #fff; padding: 3.5rem 2rem 1.5rem; }
+.footer-inner { max-width: 1000px; margin: 0 auto; }
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2.5rem; margin-bottom: 2.5rem; padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.f-logo {
+  font-family: 'Montserrat', sans-serif; font-weight: 900;
+  font-size: 1.2rem; color: #fff; line-height: 1.1; margin-bottom: 0.25rem;
+}
+.f-logo span {
+  background: linear-gradient(90deg, var(--blue-light), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.f-logo small {
+  display: block; font-size: 0.5rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); font-style: normal; margin-top: 3px;
+  -webkit-text-fill-color: rgba(255,255,255,0.35);
+}
+.f-desc { font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.7; margin-top: 0.75rem; }
+
+.f-col h4 {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.38); margin-bottom: 0.75rem;
+}
+.f-col ul { list-style: none; }
+.f-col ul li { margin-bottom: 0.35rem; }
+.f-col ul a { font-size: 0.8rem; color: rgba(255,255,255,0.58); transition: color 0.2s; }
+.f-col ul a:hover { color: #fff; }
+
+.f-cta-btn {
+  display: inline-block; margin-top: 0.5rem;
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue-light));
+  color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.5rem 1.2rem; border-radius: 3px; transition: opacity 0.2s;
+}
+.f-cta-btn:hover { opacity: 0.85; }
+
+.footer-bottom {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  align-items: center; justify-content: space-between;
+  font-size: 0.7rem; color: rgba(255,255,255,0.28);
+}
+.footer-bottom a { color: rgba(255,255,255,0.35); margin-left: 1rem; }
+.footer-bottom a:hover { color: #fff; }
+.footer-url { color: var(--blue-light) !important; }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 1050px) {
+  .plans-grid { grid-template-columns: repeat(3,1fr); }
+  .agenda-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 860px) {
+  .nav-ul { display: none; }
+  .reg-grid { grid-template-columns: 1fr 1fr; }
+  .vmv-grid { grid-template-columns: 1fr; }
+  .leaders-grid { grid-template-columns: 1fr 1fr; }
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+  .org-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .hero { height: 420px; }
+  .slide { padding-bottom: 50px; padding-left: 24px; }
+  .hero-brand .hb-main { font-size: 1.5rem; }
+  .slide-title { font-size: 1.2rem; }
+  .reg-grid { grid-template-columns: 1fr; }
+  .plans-grid { grid-template-columns: 1fr; }
+  .agenda-grid { grid-template-columns: 1fr; }
+  .leaders-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NEWSLETTER POPUP ══ -->
+<div class="newsletter-overlay" id="nlOverlay">
+  <div class="newsletter-box">
+    <button class="nl-close" onclick="closeNewsletter()">✕</button>
+    <div class="nl-badge">Newsletter MEF</div>
+    <h2 class="nl-title">Fique informado sobre o Fórum</h2>
+    <p class="nl-subtitle">Receba actualizações exclusivas, agenda, oradores e oportunidades de negócio do Mozambique Economic Forum directamente no seu e-mail.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="text" placeholder="O seu nome completo" />
+      <input class="nl-input" type="email" placeholder="O seu endereço de e-mail" />
+      <button class="nl-submit" onclick="closeNewsletter()">Subscrever Newsletter</button>
+    </div>
+    <div class="nl-skip" style="margin-top:0.85rem;">
+      <button onclick="closeNewsletter()">Continuar sem subscrever</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TOP NAV ══ -->
+<nav class="topbar">
+  <div class="logo-area">
+    <!-- Host logos -->
+    <div class="host-logos">
+      <div class="hlogo">APME</div>
+      <span class="hlogo-sep">|</span>
+      <div class="hlogo">MEF</div>
+      <span class="hlogo-sep">|</span>
+      <div class="hlogo">Enermina</div>
+    </div>
+    <div style="width:1px;height:32px;background:rgba(255,255,255,0.12);margin:0 0.5rem;"></div>
+    <div>
+      <div class="logo-text"><span>Mozambique</span> Economic Forum</div>
+      <div class="logo-tagline">www.mozeconomicforum.org</div>
+    </div>
+  </div>
+  <ul class="nav-ul">
+    <li><a href="#" class="home-icon">⌂</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#agenda">Agenda</a></li>
+    <li><a href="#membros">Membros</a></li>
+    <li><a href="#historia">História</a></li>
+    <li><a href="#lideranca">Liderança</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO CAROUSEL ══ -->
+<div class="hero" id="home">
+  <div class="hero-brand">
+    <div class="hb-main"><span>Mozambique</span> Economic Forum</div>
+    <div class="hb-sub">www.mozeconomicforum.org</div>
+  </div>
+
+  <!-- Slide 1 -->
+  <div class="slide active">
+    <div class="slide-bg bg1"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Investindo na Indústria, Serviços e <span class="accent">Conteúdo Local</span> em Moçambique</h1>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide">
+    <div class="slide-bg bg2"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Um Novo Capítulo na História da <span class="accent">Independência Económica</span></h1>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide">
+    <div class="slide-bg bg3"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">O Maior Palco de <span class="accent">Negócios, Ligações Económicas</span> e Investimentos em Moçambique</h1>
+    </div>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="slide">
+    <div class="slide-bg bg4"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">O Melhor Lugar para Aceder a <span class="accent">Mercados, Financiamento</span> e Informação Económica</h1>
+    </div>
+  </div>
+
+  <!-- Slide 5 -->
+  <div class="slide">
+    <div class="slide-bg bg5"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">O Centro das Parcerias <span class="accent">Públicas, Privadas</span> e Público-Privadas em Moçambique</h1>
+    </div>
+  </div>
+
+  <!-- Slide 6 -->
+  <div class="slide">
+    <div class="slide-bg bg6"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Conecte-se ao <span class="accent">Mercado Real</span> para Avançar o Desenvolvimento Económico de Moçambique</h1>
+      <a href="#registo" class="btn btn-mef">Registar Agora</a>
+    </div>
+  </div>
+
+  <div class="slider-dots">
+    <button class="sdot active" onclick="goSlide(0)"></button>
+    <button class="sdot" onclick="goSlide(1)"></button>
+    <button class="sdot" onclick="goSlide(2)"></button>
+    <button class="sdot" onclick="goSlide(3)"></button>
+    <button class="sdot" onclick="goSlide(4)"></button>
+    <button class="sdot" onclick="goSlide(5)"></button>
+  </div>
+</div>
+
+<!-- ══ REGISTRATION ══ -->
+<section class="registration" id="registo">
+  <div class="registration-inner">
+    <div class="reg-intro">Escolha o seu tipo de participação e registe-se</div>
+    <div class="reg-grid">
+      <div class="reg-card">
+        <div class="reg-icon">🚀</div>
+        <div class="reg-title">Empreendedor</div>
+        <div class="reg-desc">Micro, Pequenas e Médias Empresas individuais</div>
+        <a href="https://www.mozdigital.org/auth/r4c8n1" target="_blank" class="btn btn-mef">Registar</a>
+      </div>
+      <div class="reg-card">
+        <div class="reg-icon">🏢</div>
+        <div class="reg-title">MPMEs</div>
+        <div class="reg-desc">Micro, Pequenas e Médias Empresas formalizadas</div>
+        <a href="https://www.mozdigital.org/auth/r4c8n1" target="_blank" class="btn btn-mef">Registar</a>
+      </div>
+      <div class="reg-card">
+        <div class="reg-icon">🏭</div>
+        <div class="reg-title">Empresa Local</div>
+        <div class="reg-desc">Empresas locais de grande porte e conteúdo local</div>
+        <a href="https://www.mozdigital.org/auth/r4c8n1" target="_blank" class="btn btn-mef">Registar</a>
+      </div>
+      <div class="reg-card">
+        <div class="reg-icon">💼</div>
+        <div class="reg-title">Investidor</div>
+        <div class="reg-desc">Investidores nacionais e internacionais</div>
+        <a href="https://www.mozdigital.org/auth/r4c8n1" target="_blank" class="btn btn-mef">Registar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOST LOGOS BAR ══ -->
+<div class="host-logos-bar">
+  <div class="bar-label">Organizadores & Parceiros</div>
+  <div class="hlogos-row">
+    <div class="hlogo-pill">Enermina</div>
+    <div class="hlogo-pill">APME</div>
+    <div class="hlogo-pill">APICOL</div>
+    <div class="hlogo-pill">SeasonWizard</div>
+    <div class="hlogo-pill">Legacy Holding Corporation</div>
+    <div class="hlogo-pill">Grupo Mesquita</div>
+    <div class="hlogo-pill">Chele Consultoria</div>
+    <div class="hlogo-pill">Royal Burger Group</div>
+    <div class="hlogo-pill">IFPELAC – Inhambane</div>
+    <div class="hlogo-pill">Conselho Nacional da Juventude</div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<section class="about" id="sobre">
+  <h2>O Futuro da Economia<br><span>Definido no Presente</span></h2>
+  <p class="sub-head">
+    Mozambique Economic Forum é o ponto de convergência da economia real,<br>e palco da independência económica de Moçambique.
+  </p>
+  <p>O Mozambique Economic Forum é um encontro anual alinhado aos esforços do Governo, sector privado, academia e sociedade civil para alargar o debate para o desenvolvimento, atrair investimentos, acelerar a industrialização, e crescimento económico, e das micro, pequenas e médias empresas em Moçambique.</p>
+  <p><strong>O Maior Palco da Independência Económica</strong> — O Mozambique Economic Forum conecta investidores, policy-makers, bancos, fundos de pensões, parceiros programáticos, sector privado, academia e sociedade civil para avançar ideias, acesso ao financiamento, infra-estruturas, e oportunidades no mercado real rumo à independência económica de Moçambique.</p>
+
+  <div class="vmv-grid">
+    <div class="vmv-card">
+      <h4>Visão</h4>
+      <p>Ser o ponto de convergência, debate e transformação do mercado real rumo à Independência Económica de Moçambique.</p>
+    </div>
+    <div class="vmv-card">
+      <h4>Missão</h4>
+      <p>Conectar os principais actores do mercado para avançar a industrialização, serviços e conteúdo local em Moçambique.</p>
+    </div>
+    <div class="vmv-card">
+      <h4>Valores</h4>
+      <p><strong>Ciência</strong> — Econometria aplicada. <strong>Integridade</strong> — Método PESP. <strong>Mercado</strong> — Ligações empresariais e comunidade orientada à economia de mercado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ IMPACT BANNER ══ -->
+<div class="impact-banner">
+  <div class="inner">
+    <p>Conectamos líderes, cientistas, empresas, investidores e parceiros à informação essencial, oportunidades de negócios e parcerias estratégicas para avançar a <strong>indústria, serviços e conteúdo local</strong> rumo à <strong>Independência Económica de Moçambique</strong>.</p>
+  </div>
+</div>
+
+<!-- ══ STATS ROW ══ -->
+<div class="stats-row">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <div class="stat-num">2018</div>
+      <div class="stat-label">Ano do primeiro Workshop Educacional</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">+650</div>
+      <div class="stat-label">Market-players reunidos em Maputo (Dez 2024)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Edições realizadas desde 2018</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Temas centrais na agenda do Fórum</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ AGENDA ══ -->
+<section class="agenda-section" id="agenda">
+  <div class="agenda-inner">
+    <div class="agenda-ttl">Agenda do Fórum</div>
+    <div class="agenda-grid">
+      <div class="agenda-card">
+        <div class="a-icon">🌱</div>
+        <h3>Desenvolvimento Sustentável e Independência Económica</h3>
+        <p>Políticas, estratégias e iniciativas para o desenvolvimento sustentável rumo à independência económica.</p>
+      </div>
+      <div class="agenda-card">
+        <div class="a-icon">🏗️</div>
+        <h3>Indústria e Mega-Projectos</h3>
+        <p>Oportunidades de conteúdo local, industrialização e investimento nos grandes projectos de Moçambique.</p>
+      </div>
+      <div class="agenda-card">
+        <div class="a-icon">💰</div>
+        <h3>Financiamento, Negócios e MPMEs</h3>
+        <p>Acesso ao crédito, instrumentos financeiros e ecossistema de apoio às micro e pequenas empresas.</p>
+      </div>
+      <div class="agenda-card">
+        <div class="a-icon">💻</div>
+        <h3>Tecnologias e Transformação Digital</h3>
+        <p>Inovação digital, fintech, e-commerce e transformação tecnológica para impulsionar negócios.</p>
+      </div>
+      <div class="agenda-card">
+        <div class="a-icon">🚢</div>
+        <h3>Logística, Serviços e Conteúdo Local</h3>
+        <p>Cadeia de valor, fornecimento local, infraestrutura de transporte e serviços estratégicos.</p>
+      </div>
+      <div class="agenda-card">
+        <div class="a-icon">🌾</div>
+        <h3>Agricultura, Economia Azul e ESGs</h3>
+        <p>Agronegócio, pesca, recursos marinhos, sustentabilidade ambiental e governança responsável.</p>
+      </div>
+      <div class="agenda-card">
+        <div class="a-icon">📊</div>
+        <h3>Doing Business e Gestão Empresarial</h3>
+        <p>Ambiente de negócios, regulação, boas práticas de gestão e empreendedorismo em Moçambique.</p>
+      </div>
+      <div class="agenda-card">
+        <div class="a-icon">🤝</div>
+        <h3>Parcerias Público-Privadas</h3>
+        <p>Modelos de cooperação, financiamento misto e projectos estratégicos de desenvolvimento nacional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MEMBERSHIP / TICKETS ══ -->
+<section class="members-section" id="membros">
+  <div class="members-inner">
+    <div class="sec-label">Participação</div>
+    <h2 class="sec-title">Planos de <span>Acesso ao Fórum</span></h2>
+    <div class="plans-grid">
+
+      <!-- Empreendedor -->
+      <div class="plan-card">
+        <div class="plan-name">Empreendedor</div>
+        <div class="plan-price">10.000 <span>Mt</span></div>
+        <ul class="plan-perks">
+          <li>Acesso (1) ao Fórum Económico de Moçambique</li>
+          <li>Registo no MozDigital – Portal de Negócios das MPMEs (3 meses)</li>
+          <li>Acesso a todas as apresentações</li>
+        </ul>
+        <a href="https://www.mozdigital.org/auth/r4c8n1" target="_blank" class="btn btn-mef">Registar</a>
+      </div>
+
+      <!-- Conteúdo Local -->
+      <div class="plan-card featured">
+        <div class="plan-badge">Popular</div>
+        <div class="plan-name">Conteúdo Local</div>
+        <div class="plan-price">20.000 <span>Mt</span></div>
+        <ul class="plan-perks">
+          <li>Acessos (2) VIP ao Fórum Económico de Moçambique</li>
+          <li>Registo no MozDigital – Portal MPMEs (3 meses)</li>
+          <li>Acesso a todas as apresentações</li>
+          <li>Publicidade e marketing (1 cartaz corporate + logo no Mural dos Empresários)</li>
+        </ul>
+        <a href="https://www.mozdigital.org/auth/r4c8n1" target="_blank" class="btn btn-mef">Registar</a>
+      </div>
+
+      <!-- Multinacional -->
+      <div class="plan-card">
+        <div class="plan-name">Multinacional</div>
+        <div class="plan-price">50.000 <span>Mt</span></div>
+        <ul class="plan-perks">
+          <li>Acessos (2) VIP ao Fórum Económico de Moçambique</li>
+          <li>Registo no MozDigital – Portal MPMEs (3 meses)</li>
+          <li>Acesso a todas as apresentações</li>
+          <li>Publicidade e marketing (1 cartaz + logo no Mural dos Empresários)</li>
+          <li>Acesso ao Mapa de Projectos Locais</li>
+        </ul>
+        <a href="https://www.mozdigital.org/auth/r4c8n1" target="_blank" class="btn btn-mef">Registar</a>
+      </div>
+
+      <!-- Investidor -->
+      <div class="plan-card">
+        <div class="plan-name">Investidor</div>
+        <div class="plan-price">60.000 <span>Mt</span></div>
+        <ul class="plan-perks">
+          <li>Acesso (1) VIP ao Fórum Económico de Moçambique</li>
+          <li>Registo no MozDigital – Portal MPMEs (3 meses)</li>
+          <li>Acesso a todas as apresentações</li>
+          <li>Acesso ao Mapa de Projectos Locais</li>
+          <li>Publicidade e marketing (1 cartaz + logo* no Mural dos Empresários)</li>
+        </ul>
+        <a href="https://www.mozdigital.org/auth/r4c8n1" target="_blank" class="btn btn-mef">Registar</a>
+      </div>
+
+      <!-- Governo -->
+      <div class="plan-card">
+        <div class="plan-name">Governo</div>
+        <div class="plan-price">10.000 <span>Mt</span></div>
+        <ul class="plan-perks">
+          <li>Acesso (2) ao Fórum Económico de Moçambique</li>
+          <li>Registo no MozDigital – Portal MPMEs (3 meses)</li>
+          <li>Acesso a todas as apresentações</li>
+          <li>Acesso ao Mapa de Projectos Locais</li>
+          <li>Publicidade e marketing (1 cartaz + logo* no Mural dos Empresários)</li>
+        </ul>
+        <a href="https://www.mozdigital.org/auth/r4c8n1" target="_blank" class="btn btn-mef">Registar</a>
+      </div>
+
+    </div>
+
+    <div class="billing-note">
+      <strong>Facturação:</strong> Após registo no MozDigital, o participante receberá no e-mail uma factura emitida pela <strong>MozEconomia</strong>. O pagamento deverá ser efectuado nas contas fornecidas pela organização para confirmar o acesso ao MEF.
+    </div>
+  </div>
+</section>
+
+<!-- ══ HISTORY ══ -->
+<section class="history-section" id="historia">
+  <div class="history-inner">
+    <div class="sec-label">A Nossa Jornada</div>
+    <h2 class="sec-title">Nossa História</h2>
+    <div class="timeline" style="margin-top:2rem;">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2018</div>
+        <p>O nosso primeiro <strong>Workshop Educacional</strong> com legisladores, magistrados, academia, membros do governo e sociedade civil — o ponto de partida de uma visão transformadora.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">17 Julho 2022</div>
+        <p>Realizamos a nossa <strong>1ª Conferência e Feira do Conteúdo Local</strong>, consolidando o MEF como principal plataforma de debate económico em Moçambique.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">19 Dezembro 2024</div>
+        <p>Reunimos <strong>+650 market-players</strong> chave da economia na Cidade de Maputo para avançar a Indústria Extractiva e Conteúdo Local em Moçambique.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">Novembro 2025</div>
+        <p>Realizamos a <strong>Sessão de Alto Nível sobre Conteúdo Local</strong> em Maputo (7 Nov) e a <strong>2ª Conferência e Feira do Conteúdo Local</strong> em Pemba, Cabo Delgado (21–22 Nov).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LEADERSHIP ══ -->
+<section class="leadership-section" id="lideranca">
+  <div class="leadership-inner">
+    <div class="sec-label">Equipa</div>
+    <h2 class="sec-title">Os Nossos <span>Líderes</span></h2>
+    <div class="leaders-grid" style="margin-top:1.75rem;">
+      <div class="leader-card">
+        <div class="leader-avatar">JN</div>
+        <div class="leader-name">José Nchumali</div>
+        <div class="leader-role">Presidente</div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-avatar">PS</div>
+        <div class="leader-name">Pedro Silva</div>
+        <div class="leader-role">Vice-Presidente</div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-avatar">UM</div>
+        <div class="leader-name">Ussene Mucanheia</div>
+        <div class="leader-role">Director Executivo</div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-avatar">PM</div>
+        <div class="leader-name">Paulo Mata</div>
+        <div class="leader-role">Coordenador do Fórum</div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-avatar">OM</div>
+        <div class="leader-name">Orlando Mesquita</div>
+        <div class="leader-role">Coordenador de Operações</div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-avatar">MM</div>
+        <div class="leader-name">Marco Mesquita</div>
+        <div class="leader-role">Coordenador de Produção</div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-avatar">DM</div>
+        <div class="leader-name">Dário Manjate</div>
+        <div class="leader-role">Coordenador de Logística</div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-avatar">MV</div>
+        <div class="leader-name">Moisés Mavie</div>
+        <div class="leader-role">Coord. de Comunicação e Imagem</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ORGANISERS / SPONSORS / PARTNERS ══ -->
+<section class="org-section" id="organizacao">
+  <div class="org-inner">
+    <div class="sec-label">Quem nos Apoia</div>
+    <h2 class="sec-title" style="margin-bottom:2rem;">Organização, Patrocinadores <span>e Parceiros</span></h2>
+    <div class="org-grid">
+      <div class="org-block">
+        <h4>Organizadores</h4>
+        <div class="org-tags">
+          <div class="org-tag">Enermina</div>
+          <div class="org-tag">APME</div>
+          <div class="org-tag">APICOL</div>
+          <div class="org-tag">SeasonWizard</div>
+          <div class="org-tag">Legacy Holding Corporation</div>
+          <div class="org-tag">Grupo Mesquita</div>
+        </div>
+      </div>
+      <div class="org-block">
+        <h4>Patrocinadores</h4>
+        <div class="org-tags">
+          <div class="org-tag">Chele Consultoria e Serviços</div>
+          <div class="org-tag">Royal Burger Group</div>
+        </div>
+      </div>
+      <div class="org-block">
+        <h4>Parceiros</h4>
+        <div class="org-tags">
+          <div class="org-tag">IFPELAC – Inhambane</div>
+          <div class="org-tag">Conselho Nacional da Juventude</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="f-logo">
+          <span>Mozambique</span> Economic Forum
+          <small>www.mozeconomicforum.org</small>
+        </div>
+        <p class="f-desc">O ponto de convergência da economia real e palco da independência económica de Moçambique. Conectamos líderes, empresas, investidores e parceiros às melhores oportunidades do mercado.</p>
+      </div>
+      <div class="f-col">
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="#sobre">Sobre o MEF</a></li>
+          <li><a href="#agenda">Agenda</a></li>
+          <li><a href="#historia">Nossa História</a></li>
+          <li><a href="#lideranca">Liderança</a></li>
+          <li><a href="#organizacao">Organização</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Participação</h4>
+        <ul>
+          <li><a href="#membros">Planos de Acesso</a></li>
+          <li><a href="https://www.mozdigital.org/auth/r4c8n1" target="_blank">Registo Pessoal</a></li>
+          <li><a href="https://www.mozdigital.org/auth/r4c8n1" target="_blank">Registo Empresarial</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Membros &amp; Investidores</h4>
+        <a href="#membros" class="f-cta-btn">Ver Planos</a>
+        <h4 style="margin-top:1.25rem;">MozDigital</h4>
+        <a href="https://www.mozdigital.org/auth/r4c8n1" target="_blank" class="f-cta-btn">Aceder ao Portal</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Mozambique Economic Forum. Todos os direitos reservados. · <a href="http://www.mozeconomicforum.org" class="footer-url" target="_blank">www.mozeconomicforum.org</a></span>
+      <div>
+        <a href="#">Termos e Condições</a>
+        <a href="#">Política de Privacidade</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Hero carousel ──
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+const sdots  = document.querySelectorAll('.sdot');
+function goSlide(n) {
+  slides[cur].classList.remove('active'); sdots[cur].classList.remove('active');
+  cur = (n + slides.length) % slides.length;
+  slides[cur].classList.add('active'); sdots[cur].classList.add('active');
+}
+setInterval(() => goSlide(cur + 1), 5000);
+
+// ── Newsletter popup — show after 3 s ──
+setTimeout(() => {
+  document.getElementById('nlOverlay').classList.add('show');
+}, 3000);
+function closeNewsletter() {
+  document.getElementById('nlOverlay').classList.remove('show');
+}
+// Close on backdrop click
+document.getElementById('nlOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeNewsletter();
+});
+</script>
+</body>
+</html>

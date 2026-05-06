@@ -31,16 +31,16 @@ export default function Navbar() {
     <>
 
       <div
-        className='fixed top-0 left-0 right-0 z-300 flex items-center flex-1 w-full h-18 transition-[background,border-color] duration-350 ease-in-out'
+        className='fixed top-0 left-0 right-0 z-300 flex items-center flex-1 w-full h-22 transition-[background,border-color] duration-350 ease-in-out'
         style={{
           background: scrolled ? '#0a0f1e' : 'transparent',
           backdropFilter: scrolled ? 'none' : 'blur(6px)',
         }}
       >
         <nav
-          className="w-full flex items-stretch px-12 py-2"
+          className="w-full max-w-440 mx-auto flex items-stretch px-12 py-2"
         >
-          <div className="w-36 p-4">
+          <div className="w-40 p-2">
             <Image
               src="/logo.png"
               alt="Mozambique Economic Forum"
@@ -57,7 +57,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="flex items-center h-full px-3 font-montserrat text-sm font-bold tracking-[0.08em] text-white border-b-[3px] border-b-transparent transition-[color,border-color] duration-200 hover:text-white hover:border-b-blue"
+                  className="flex items-center h-full px-3 font-montserrat text-sm tracking-[0.08em] text-white border-b-[3px] border-b-transparent transition-[color,border-color] duration-200 hover:text-white hover:border-b-orange-400"
                 >
                   {link.label.toUpperCase()}
                 </a>
@@ -102,7 +102,7 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center justify-between py-4 font-montserrat text-[0.9rem] font-semibold text-white/80 transition-colors duration-200 hover:text-white"
+                  className="flex items-center justify-between py-4 font-montserrat text-[0.9rem] text-white/80 transition-colors duration-200 hover:text-white"
                 >
                   {link.label}
                   {link.chevron && (
