@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand colours — matched to reference HTML source */
+  --color-blue:      #1565c0;
+  --color-blue-mid:  #1976d2;
+  --color-blue-light: #2196f3;
+  --color-blue-dark: #0d47a1;
+  --color-gold:      #f9a825;
+  --color-navy:      #0a0f1e;
+  --color-dark:      #111111;
+
+  /* Custom breakpoint for nav collapse */
+  --breakpoint-nav: 920px;
+
+  /* Named animations */
+  --animate-t-fade:    tFade 0.5s ease;
+  --animate-drawer-in: drawerIn 0.22s ease;
+}
+ 
+/* Font utilities — defined here so they reference the next/font CSS variables
+   without creating a circular reference inside @theme inline */
+.font-montserrat { font-family: var(--font-montserrat, 'Montserrat', sans-serif); }
+
+/* ── BARE GLOBAL RESETS ── */
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-open-sans, 'Open Sans', sans-serif); color: #1a1a2e; background: #fff; overflow-y: scroll; overflow-x: hidden; }
+
+/* ── ANCHOR SCROLL OFFSET FOR FIXED NAV ── */
+#sponsor, #about, #attend, #marketplace, #hotel, #program, #host-cities, #events {
+  scroll-margin-top: 64px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── KEYFRAMES ── */
+@keyframes tFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes drawerIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── SLIDE BACKGROUND GRADIENTS — matched to reference HTML ── */
+.bg1 { background: linear-gradient(155deg, #0d1b3e 0%, #1a3a6e 35%, #0a1020 100%); }
+.bg2 { background: linear-gradient(155deg, #1a0f00 0%, #3d2200 35%, #0d0d1a 100%); }
+.bg3 { background: linear-gradient(155deg, #001a0d 0%, #003d20 35%, #0a0d12 100%); }
+.bg4 { background: linear-gradient(155deg, #1a1a00 0%, #3d3800 35%, #0d0d1a 100%); }
+.bg5 { background: linear-gradient(155deg, #0d001a 0%, #2a003d 35%, #0a0d12 100%); }
+.bg6 { background: linear-gradient(155deg, #001a1a 0%, #003d3d 35%, #0a0d12 100%); }
+
+/* ── SLIDE-BG PSEUDO-ELEMENTS (cannot be done with inline utilities) ── */
+.slide-bg::before {
+  content: 'IMAGEM ILUSTRATIVA';
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Montserrat', sans-serif; font-size: 0.6rem;
+  letter-spacing: 0.3em; font-weight: 700;
+  color: rgba(255,255,255,0.04); pointer-events: none;
+}
+.slide-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right,
+    rgba(0,0,0,0.78) 0%,
+    rgba(0,0,0,0.38) 55%,
+    rgba(0,0,0,0.08) 100%);
 }
