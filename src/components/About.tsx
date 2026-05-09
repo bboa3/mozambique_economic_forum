@@ -16,13 +16,13 @@ export default function About() {
   ];
 
   return (
-    <section className="w-full bg-[#f4f6f9] py-16 px-8" id="about">
+    <section className="w-full py-16 px-8 bg-indigo-50" id="about">
       <div className="max-w-5xl mx-auto">
 
         {/* Section label */}
         <div className="flex items-center gap-3 mb-4">
-          <span className="inline-block w-5 h-0.5 bg-orange-400 shrink-0" />
-          <span className="font-montserrat font-bold text-[0.7rem] tracking-[0.18em] uppercase text-orange-400">
+          <span className="inline-block w-5 h-0.5 bg-indigo-600 shrink-0" />
+          <span className="font-montserrat font-bold text-[0.7rem] tracking-[0.18em] uppercase text-indigo-600">
             Sobre o MEF
           </span>
         </div>
@@ -63,10 +63,10 @@ export default function About() {
           {vmvCards.map((card) => (
             <div
               key={card.title}
-              className="relative overflow-hidden bg-white rounded-sm transition-all duration-250 hover:--translate-y-0.75 hover:shadow-lg hover:border-orange-400"
+              className="relative overflow-hidden bg-white rounded-2xl shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
             >
               {/* Top gradient bar */}
-              <div className="h-1 w-full bg-orange-400" />
+              <div className="h-1 w-full bg-linear-to-r from-blue-600 to-indigo-600" />
               <div className="p-6">
                 <h3 className="font-montserrat font-extrabold text-lg mb-3">
                   {card.title}

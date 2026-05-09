@@ -31,16 +31,15 @@ const timelineEntries = [
 export default function HostBar() {
   return (
     <section
-      className="py-16 px-8"
+      className="py-16 px-8 bg-slate-950"
       id="historia"
-      style={{ background: '#0a0f1e' }}
     >
       <div className="max-w-3xl mx-auto">
 
         {/* Section label */}
         <div className="flex items-center gap-3 mb-4">
-          <span className="inline-block w-5 h-0.5 bg-orange-400 shrink-0" />
-          <span className="font-montserrat font-bold text-[0.7rem] tracking-[0.18em] uppercase text-orange-400">
+          <span className="inline-block w-5 h-0.5 bg-indigo-400 shrink-0" />
+          <span className="font-montserrat font-bold text-[0.7rem] tracking-[0.18em] uppercase text-indigo-400">
             A Nossa Jornada
           </span>
         </div>
@@ -50,16 +49,15 @@ export default function HostBar() {
         </h2>
 
         {/* Vertical timeline */}
-        <div className="relative pl-8 border-l-2" style={{ borderColor: 'rgba(255,167,38,0.40)' }}>
+        <div className="relative pl-8 border-l-2 border-indigo-500/40">
           {timelineEntries.map((entry, i) => (
             <div key={i} className="relative mb-10 last:mb-0">
               {/* Dot on the line */}
               <div
-                className="absolute left-[-2.45rem] top-1 w-4 h-4 rounded-full border-2 border-orange-400"
-                style={{ background: '#0a0f1e' }}
+                className="absolute left-[-2.45rem] top-1 w-4 h-4 rounded-full border-2 border-indigo-500 bg-slate-950"
               />
               {/* Year label */}
-              <div className="font-montserrat font-extrabold text-base tracking-loose uppercase text-orange-400 mb-2">
+              <div className="font-montserrat font-extrabold text-base tracking-loose uppercase mb-2 text-indigo-400">
                 {entry.year}
               </div>
               {/* Entry text */}

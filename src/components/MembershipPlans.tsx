@@ -69,13 +69,13 @@ const REGISTER_URL = 'https://www.mozdigital.org/auth/r4c8n1';
 
 export default function MembershipPlans() {
   return (
-    <section className="bg-[#f4f6f9] py-16 px-8" id="planos">
+    <section className="py-16 px-8 bg-indigo-50" id="planos">
       <div className="max-w-l mx-auto">
 
         {/* Section label */}
         <div className="flex items-center gap-3 mb-4">
-          <span className="inline-block w-5 h-0.5 bg-orange-400 shrink-0" />
-          <span className="font-montserrat font-bold text-[0.7rem] tracking-[0.18em] uppercase text-orange-400">
+          <span className="inline-block w-5 h-0.5 bg-indigo-600 shrink-0" />
+          <span className="font-montserrat font-bold text-[0.7rem] tracking-[0.18em] uppercase text-indigo-600">
             Participação
           </span>
         </div>
@@ -99,29 +99,22 @@ export default function MembershipPlans() {
 function PlanCard({ plan }: { plan: Plan }) {
   return (
     <div
-      className="flex flex-col w-2xl md:w-1/3 max-w-80 bg-white transition-all duration-300 hover:-translate-y-1"
-      style={{
-        borderRadius: '16px',
-        border: plan.featured ? '2px solid #1565c0' : '1px solid #e2e6ed',
-        boxShadow: plan.featured
-          ? '0 8px 32px rgba(21,101,192,0.15)'
-          : '0 2px 12px rgba(0,0,0,0.06)',
-        overflow: 'hidden',
-      }}
+      className={`flex flex-col w-2xl md:w-1/3 max-w-80 bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 ${
+        plan.featured
+          ? 'border-2 border-indigo-600 shadow-xl shadow-indigo-500/20'
+          : 'border border-gray-200 shadow-sm hover:shadow-md'
+      }`}
     >
       {/* Featured banner */}
       {plan.featured ? (
-        <div
-          className="flex items-center justify-center py-[0.6rem]"
-          style={{ background: '#0a0f1e' }}
-        >
+        <div className="flex items-center justify-center py-[0.6rem] bg-linear-to-r from-blue-600 to-indigo-600">
           <span className="font-montserrat font-extrabold text-[0.62rem] tracking-[0.18em] uppercase text-white">
             Mais Popular
           </span>
         </div>
       ) : (
         /* Spacer so all card bodies start at the same height */
-        <div style={{ height: '38px' }} />
+        <div className="h-[38px]" />
       )}
 
       <div className="flex flex-col flex-1 px-7 pt-6 pb-7">
@@ -137,8 +130,7 @@ function PlanCard({ plan }: { plan: Plan }) {
         {/* Price */}
         <div className="flex items-baseline gap-1 mb-6">
           <span
-            className="font-montserrat font-black text-[1.9rem] leading-none"
-            style={{ color: '#1565c0' }}
+            className="font-montserrat font-black text-[1.9rem] leading-none text-indigo-600"
           >
             {plan.price}
           </span>
@@ -150,8 +142,7 @@ function PlanCard({ plan }: { plan: Plan }) {
           {plan.perks.map((perk) => (
             <li key={perk} className="flex items-start gap-[0.6rem]">
               <span
-                className="shrink-0 font-bold text-[0.8rem] mt-[0.05rem]"
-                style={{ color: '#1565c0' }}
+                className="shrink-0 font-bold text-[0.8rem] mt-[0.05rem] text-indigo-600"
               >
                 ✓
               </span>
@@ -160,17 +151,12 @@ function PlanCard({ plan }: { plan: Plan }) {
           ))}
         </ul>
 
-        {/* CTA button — pill, full-width, gold */}
+        {/* CTA button — pill, full-width, MozDigital blue */}
         <a
           href={REGISTER_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="block text-center font-montserrat font-extrabold text-[0.78rem] tracking-[0.04em] py-[0.85rem] px-4 transition-opacity duration-200 hover:opacity-90"
-          style={{
-            background: '#f9a825',
-            color: '#1a1a2e',
-            borderRadius: '50px',
-          }}
+          className="block text-center font-montserrat font-extrabold text-[0.78rem] tracking-[0.04em] py-[0.9rem] px-4 rounded-xl bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-indigo-500/30 transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5"
         >
           Registar — {plan.title}
         </a>

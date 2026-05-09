@@ -9,6 +9,9 @@
   --color-gold:      #f9a825;
   --color-navy:      #0a0f1e;
   --color-dark:      #111111;
+  /* MozDigital design system */
+  --color-moz-blue:  #3B5BFF;
+  --color-moz-surface: #EEF2FF;
 
   /* Custom breakpoint for nav collapse */
   --breakpoint-nav: 920px;

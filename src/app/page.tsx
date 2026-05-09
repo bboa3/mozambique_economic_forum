@@ -6,10 +6,10 @@ import Footer from '@/components/Footer';
 import GrowthBanner from '@/components/GrowthBanner';
 import HeroSlider from '@/components/HeroSlider';
 import HostBar from '@/components/HostBar';
+import Leaders from '@/components/Leaders';
 import MembershipPlans from '@/components/MembershipPlans';
 import Navbar from '@/components/Navbar';
 import Sponsors from '@/components/Sponsors';
-import Testimonials from '@/components/Testimonials';
 import Topics from '@/components/Topics';
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
       <Topics />
       <MembershipPlans />
       <HostBar />
-      <Testimonials />
+      <Leaders />
       <Footer />
     </main>
   );
