@@ -1,79 +1,83 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-
-const testimonials = [
+const leaders = [
   {
-    quote:
-      '"The way the EsportsTravel Summit is engaging the right people that truly believe in elevating this industry has been inspiring. It\'s a win-win for everyone."',
-    cite: 'HOK',
+    name: 'José Nchumali',
+    role: 'Presidente',
+    imageUrl:
+      'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
   {
-    quote:
-      '"I certainly recommend attending the EsportsTravel Summit, especially if you\'re trying to understand opportunities that exist outside of your typical partners. When you\'re looking at bringing your esports product out into a global marketplace, the Summit is a tremendous opportunity to learn about who the players are, find opportunities and solidify strong partnerships."',
-    cite: 'Overwolf',
+    name: 'Pedro Silva',
+    role: 'Vice-Presidente',
+    imageUrl:
+      'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
   {
-    quote:
-      '"The EsportsTravel Summit is really innovative. It\'s the first that focused on this emerging trend and is really becoming a major factor in the esports industry."',
-    cite: 'Populous',
+    name: 'Ussene Mucanheia',
+    role: 'Director Executivo',
+    imageUrl:
+      'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
   {
-    quote:
-      '"The EsportsTravel Summit provides everyone an opportunity to grow new business. That\'s why destinations should attend the Summit. Esports is a fast-emerging segment within our industry. There\'s opportunity for all of us."',
-    cite: 'CVB Executive',
+    name: 'Paulo Mata',
+    role: 'Coordenador do Fórum',
+    imageUrl:
+      'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
   {
-    quote:
-      '"The EsportsTravel Summit has provided a tremendous opportunity to connect. It\'s been fantastic. We\'ve had an opportunity to outreach with folks that will be both beneficial for our efforts going forward."',
-    cite: 'U.S. Anti-Doping Agency',
+    name: 'Orlando Mesquita',
+    role: 'Coordenador de Operações',
+    imageUrl:
+      'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
-];
-
-const AUTO_CYCLE_MS = 6000;
-
+  {
+    name: 'Marco Mesquita',
+    role: 'Coordenador de Produção',
+    imageUrl:
+      'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    name: 'Dário Manjate',
+    role: 'Coordenador de Logística',
+    imageUrl:
+      'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    name: 'Moisés Mavie',
+    role: 'Coord. de Comunicação e Imagem',
+    imageUrl:
+      'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+]
 export default function Testimonials() {
-  const [current, setCurrent] = useState(0);
-
-  function goT(n: number) {
-    setCurrent(n);
-  }
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, AUTO_CYCLE_MS);
-    return () => clearInterval(id);
-  }, []);
-
   return (
-    <section className="bg-dark text-white py-16 px-8">
-      <div className="max-w-170 mx-auto text-center">
-        {testimonials.map((t, i) => (
-          <div
-            key={i}
-            className={current === i ? 'block animate-t-fade' : 'hidden'}
-          >
-            <blockquote className="text-[0.96rem] leading-[1.8] text-white/82 italic mb-4">
-              {t.quote}
-            </blockquote>
-            <cite className="font-montserrat font-bold text-[0.7rem] tracking-widest uppercase text-white/40 not-italic">
-              {t.cite}
-            </cite>
-          </div>
-        ))}
-
-        <div className="flex gap-2 justify-center mt-6">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              className={`w-7 h-0.75 rounded-sm border-0 cursor-pointer p-0 transition-colors duration-300 ${current === i ? 'bg-white' : 'bg-white/20'}`}
-              onClick={() => goT(i)}
-              aria-label={`Go to testimonial ${i + 1}`}
-            />
-          ))}
+    <div className="bg-white py-24 sm:py-32">
+      <div className="mx-auto grid max-w-9xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
+        <div className="max-w-xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-pretty sm:text-4xl">
+            Os Rostos por Trás do MEF
+          </h2>
+          <p className="mt-6 text-base/8">
+            Uma equipa comprometida com o debate, a acção e a construção da independência económica de Moçambique.
+          </p>
         </div>
+        <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+          {leaders.map((person) => (
+            <li key={person.name}>
+              <div className="flex items-center gap-x-6">
+                <img
+                  alt=""
+                  src={person.imageUrl}
+                  className="size-16 rounded-full outline-1 -outline-offset-1 outline-white/10"
+                />
+                <div>
+                  <h3 className="text-base/7 font-semibold tracking-tight ">{person.name}</h3>
+                  <p className="text-sm/6 font-semibold text-gray-700">{person.role}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
-    </section>
-  );
+    </div>
+  )
 }

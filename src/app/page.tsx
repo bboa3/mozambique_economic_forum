@@ -1,30 +1,31 @@
 // Root page — server component that composes all section components in order.
-// Client components (HeroSlider, FAQ, Testimonials) are imported here and
+// Client components (Navbar, FAQ, Testimonials, NewsletterPopup) are imported here and
 // rendered normally; Next.js handles the server/client boundary automatically.
-import Navbar from '@/components/Navbar';
-import HeroSlider from '@/components/HeroSlider';
-import Sponsors from '@/components/Sponsors';
 import About from '@/components/About';
-import GrowthBanner from '@/components/GrowthBanner';
-import Audience from '@/components/Audience';
-import FAQ from '@/components/FAQ';
-import HostBar from '@/components/HostBar';
-import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
+import GrowthBanner from '@/components/GrowthBanner';
+import HeroSlider from '@/components/HeroSlider';
+import HostBar from '@/components/HostBar';
+import MembershipPlans from '@/components/MembershipPlans';
+import Navbar from '@/components/Navbar';
+import Sponsors from '@/components/Sponsors';
+import Testimonials from '@/components/Testimonials';
+import Topics from '@/components/Topics';
 
 export default function Home() {
   return (
-    <>
+    <main className='leading-loose w-full h-full'>
       <Navbar />
       <HeroSlider />
       <Sponsors />
       <About />
       <GrowthBanner />
-      <Audience />
-      <FAQ />
+      {/* <StatsRow /> */}
+      <Topics />
+      <MembershipPlans />
       <HostBar />
       <Testimonials />
       <Footer />
-    </>
+    </main>
   );
 }

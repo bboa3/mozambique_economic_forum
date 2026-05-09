@@ -21,7 +21,7 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "Mozambique Economic Forum",
   description:
-    "Mozambique Economic Forum é o ponto de convergência da economia real,<br>e palco da independência económica de Moçambique.",
+    "Mozambique Economic Forum é o ponto de convergência da economia real e palco da independência económica de Moçambique.",
 };
 
 export default function RootLayout({
@@ -34,7 +34,9 @@ export default function RootLayout({
       lang="pt"
       className={`${montserrat.variable} ${openSans.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+      </body>
     </html>
   );
 }

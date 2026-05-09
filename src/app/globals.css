@@ -17,10 +17,7 @@
   --animate-t-fade:    tFade 0.5s ease;
   --animate-drawer-in: drawerIn 0.22s ease;
 }
- 
-/* Font utilities — defined here so they reference the next/font CSS variables
-   without creating a circular reference inside @theme inline */
-.font-montserrat { font-family: var(--font-montserrat, 'Montserrat', sans-serif); }
+
 
 /* ── BARE GLOBAL RESETS ── */
 html { scroll-behavior: smooth; }
@@ -49,20 +46,9 @@ body { font-family: var(--font-open-sans, 'Open Sans', sans-serif); color: #1a1a
 .bg5 { background: linear-gradient(155deg, #0d001a 0%, #2a003d 35%, #0a0d12 100%); }
 .bg6 { background: linear-gradient(155deg, #001a1a 0%, #003d3d 35%, #0a0d12 100%); }
 
-/* ── SLIDE-BG PSEUDO-ELEMENTS (cannot be done with inline utilities) ── */
-.slide-bg::before {
-  content: 'IMAGEM ILUSTRATIVA';
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Montserrat', sans-serif; font-size: 0.6rem;
-  letter-spacing: 0.3em; font-weight: 700;
-  color: rgba(255,255,255,0.04); pointer-events: none;
+
+/* ── SCROLL MARGIN FOR MEF SECTION IDs ── */
+#registo, #agenda, #planos, #historia, #lideranca, #sponsor {
+  scroll-margin-top: 80px;
 }
-.slide-bg::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to right,
-    rgba(0,0,0,0.78) 0%,
-    rgba(0,0,0,0.38) 55%,
-    rgba(0,0,0,0.08) 100%);
-}
+
